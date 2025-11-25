@@ -1,0 +1,331 @@
+/* ====================================
+   SOLUTIONS PAGE STYLES
+   ==================================== */
+
+.role-solution {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--background-light);
+}
+
+.role-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.role-intro h2 {
+    font-size: 2.25rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.role-intro-text {
+    font-size: 1.125rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.collaboration-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+}
+
+.collab-node {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    min-width: 220px;
+    transition: all 0.3s ease;
+}
+
+.collab-node:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 51, 102, 0.15);
+}
+
+.collab-node.data-node:hover {
+    border-color: var(--accent-blue);
+}
+
+.collab-node.analyst-node:hover {
+    border-color: var(--secondary-blue);
+}
+
+.collab-node.engineer-node:hover {
+    border-color: var(--primary-blue);
+}
+
+.collab-node h3 {
+    font-size: 1.25rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-xs);
+}
+
+.collab-node p {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.collab-connector {
+    width: 40px;
+    height: 2px;
+    background-color: var(--secondary-blue);
+    position: relative;
+}
+
+.collab-connector::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: -10px;
+    color: var(--secondary-blue);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.detailed-solutions {
+    padding: var(--spacing-3xl) 0;
+}
+
+.solution-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.solution-block.reverse {
+    grid-template-columns: 2fr 1fr;
+}
+
+.solution-block.reverse .solution-visual {
+    order: 2;
+}
+
+.solution-block.reverse .solution-content {
+    order: 1;
+}
+
+.solution-visual {
+    position: sticky;
+    top: 120px;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    border-radius: 8px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-badge {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.visual-badge.data-badge {
+    color: var(--accent-blue);
+}
+
+.visual-badge.analyst-badge {
+    color: var(--secondary-blue);
+}
+
+.visual-badge.engineer-badge {
+    color: var(--primary-blue);
+}
+
+.solution-content h2 {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.solution-lead {
+    font-size: 1.125rem;
+    color: var(--text-gray);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.solution-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.feature-item {
+    padding: var(--spacing-md);
+    background-color: var(--background-light);
+    border-left: 4px solid var(--secondary-blue);
+    border-radius: 4px;
+}
+
+.feature-item h4 {
+    font-size: 1.125rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-item p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.solution-outcomes {
+    padding: var(--spacing-lg);
+    background-color: var(--background-light);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.solution-outcomes h4 {
+    font-size: 1.125rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.solution-outcomes ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.solution-outcomes ul li {
+    padding-left: var(--spacing-md);
+    position: relative;
+    color: var(--text-dark);
+}
+
+.solution-outcomes ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.integration-approach {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--background-light);
+}
+
+.delivery-stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.stage-card {
+    background-color: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 51, 102, 0.12);
+    border-color: var(--secondary-blue);
+}
+
+.stage-number {
+    position: absolute;
+    top: -16px;
+    left: var(--spacing-md);
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.stage-card h3 {
+    font-size: 1.375rem;
+    color: var(--primary-blue);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stage-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.stage-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.role-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--background-light);
+    border: 1px solid var(--secondary-blue);
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    color: var(--secondary-blue);
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .collaboration-diagram {
+        flex-direction: column;
+    }
+
+    .collab-connector {
+        width: 2px;
+        height: 40px;
+        transform: rotate(90deg);
+    }
+
+    .solution-block,
+    .solution-block.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-block.reverse .solution-visual,
+    .solution-block.reverse .solution-content {
+        order: initial;
+    }
+
+    .solution-visual {
+        position: static;
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .delivery-stages {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-outcomes ul {
+        grid-template-columns: 1fr;
+    }
+}
