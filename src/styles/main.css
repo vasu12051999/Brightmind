@@ -183,8 +183,10 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(18px);
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -193,6 +195,8 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
     padding: var(--spacing-sm) 0;
 }
 
@@ -210,6 +214,30 @@ p {
     font-weight: 400;
 }
 
+.header-status {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+.status-pill {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: var(--background-light);
+    color: var(--secondary-blue);
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    font-weight: 600;
+}
+
+.status-pill.status-secure {
+    color: #1dbf73;
+    border-color: rgba(29, 191, 115, 0.2);
+    background-color: rgba(29, 191, 115, 0.08);
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -219,6 +247,11 @@ p {
 .nav-list {
     display: flex;
     gap: var(--spacing-md);
+    align-items: center;
+}
+
+.nav-actions {
+    display: flex;
     align-items: center;
 }
 
@@ -235,6 +268,12 @@ p {
 .nav-link.active {
     color: var(--secondary-blue);
     background-color: var(--background-light);
+}
+
+.btn-elevated {
+    box-shadow: 0 10px 28px rgba(0, 102, 204, 0.25);
+    border-radius: 999px;
+    padding-inline: 28px;
 }
 
 .mobile-menu-toggle {
@@ -259,54 +298,237 @@ p {
    ==================================== */
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    background:
+        radial-gradient(circle at top right, rgba(0, 168, 232, 0.25), transparent 55%),
+        radial-gradient(circle at 20% 20%, rgba(0, 102, 204, 0.3), transparent 60%),
+        linear-gradient(135deg, #00152a 0%, #012b4f 40%, #034b86 100%);
     color: var(--white);
-    padding: calc(80px + var(--spacing-3xl)) 0 var(--spacing-3xl);
-    text-align: center;
+    padding: calc(90px + var(--spacing-3xl)) 0 var(--spacing-3xl);
+    text-align: left;
     position: relative;
     overflow: hidden;
+    min-height: 80vh;
 }
 
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(0, 168, 232, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 102, 204, 0.1) 0%, transparent 50%);
+    inset: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     pointer-events: none;
 }
 
-.hero-content {
+.hero-grid {
     position: relative;
     z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: var(--spacing-2xl);
+    align-items: stretch;
+}
+
+.hero-content {
+    max-width: 640px;
+}
+
+.hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-sm);
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.25rem;
     font-weight: 700;
     margin-bottom: var(--spacing-md);
     color: var(--white);
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    margin-bottom: var(--spacing-xl);
-    opacity: 0.95;
-    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-pill {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    font-size: 0.875rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
 }
 
 .hero-cta {
     display: flex;
     gap: var(--spacing-md);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 160px));
+    gap: var(--spacing-md);
+}
+
+.hero-meta-item {
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+}
+
+.meta-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+}
+
+.meta-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.hero-panel {
+    padding: var(--spacing-lg);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(3, 23, 49, 0.75);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.hero-panel.primary {
+    flex: 1;
+}
+
+.hero-panel.secondary {
+    background-color: rgba(6, 35, 70, 0.8);
+}
+
+.hero-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-panel-header span {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-signal {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hero-signal.online {
+    background-color: rgba(57, 255, 20, 0.2);
+    color: #57ff81;
+    border: 1px solid rgba(57, 255, 20, 0.4);
+}
+
+.hero-scorecard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.hero-scorecard li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-scorecard li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hero-scorecard span {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+}
+
+.hero-scorecard strong {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.panel-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-progress-item + .hero-progress-item {
+    margin-top: var(--spacing-md);
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-xs);
+}
+
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--progress, 50%);
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    border-radius: inherit;
+    box-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
 }
 
 /* ====================================
@@ -677,6 +899,10 @@ p {
    ==================================== */
 
 @media (max-width: 992px) {
+    .header-status {
+        display: none;
+    }
+
     .nav {
         position: fixed;
         top: 72px;
@@ -689,6 +915,7 @@ p {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
+        gap: var(--spacing-md);
     }
 
     .nav.active {
@@ -706,8 +933,21 @@ p {
         padding: var(--spacing-sm);
     }
 
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
     .mobile-menu-toggle {
         display: flex;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-meta {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     .hero-title {
@@ -739,6 +979,14 @@ p {
 
     .hero-title {
         font-size: 1.75rem;
+    }
+
+    .hero-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        order: -1;
     }
 
     .hero-cta {
